@@ -12,9 +12,4 @@ def extract_links_from_xml(xml_file):
         loc_element = url_element.find('sitemap:loc', namespaces)
         if loc_element is not None:
             all_links.append(loc_element.text)
-    return all_links
-
-def save_results_to_json(links, output_file):
-    with open(output_file, 'w') as file:
-        json.dump(links, file, indent=4)
-    print(f"Data saved to {output_file}")
+    return json.dumps(all_links, indent=4)
